@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PeachBuilder Club — Coaching groupe fessiers · Loryne Belle</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --beige: #F5EDE4;
+    --nude: #E8D5C4;
+    --caramel: #C4A882;
+    --accent: #A0704A;
+    --dark: #2C2C2A;
+    --white: #FFFFFF;
+    --pink-soft: #F0D9CE;
+    --green: #E1F5EE;
+    --green-dark: #085041;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--beige); color: var(--dark); }
+
+  /* HERO */
+  .hero { background: var(--dark); padding: 72px 24px 88px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 80% 60% at 50% 0%, #3d3020 0%, transparent 70%); pointer-events:none; }
+  .hero-tag { display:inline-block; font-size:11px; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--caramel); border:1px solid var(--accent); border-radius:40px; padding:6px 18px; margin-bottom:28px; }
+  .hero h1 { font-family:'Playfair Display',serif; font-size:clamp(34px,6vw,58px); color:var(--white); line-height:1.15; margin-bottom:16px; max-width:680px; margin-left:auto; margin-right:auto; }
+  .hero h1 span { color:var(--caramel); font-style:italic; }
+  .hero-sub { font-size:16px; color:var(--nude); line-height:1.7; max-width:520px; margin:0 auto 48px; font-weight:300; }
+  .hero-price { display:inline-flex; align-items:baseline; gap:8px; background:rgba(255,255,255,0.07); border:1px solid rgba(196,168,130,0.3); border-radius:16px; padding:16px 32px; margin-bottom:32px; }
+  .price-num { font-family:'Playfair Display',serif; font-size:48px; color:var(--white); line-height:1; }
+  .price-sub { font-size:14px; color:var(--caramel); }
+  .btn-hero { display:inline-block; padding:18px 48px; background:var(--caramel); color:var(--dark); border:none; border-radius:10px; font-family:'DM Sans',sans-serif; font-size:16px; font-weight:500; cursor:pointer; text-decoration:none; transition:background 0.2s; }
+  .btn-hero:hover { background:var(--nude); }
+  .hero-note { font-size:12px; color:#888; margin-top:14px; }
+
+  /* SECTIONS */
+  .section { padding:72px 24px; max-width:720px; margin:0 auto; }
+  .section-label { font-size:11px; font-weight:500; letter-spacing:0.15em; text-transform:uppercase; color:var(--caramel); margin-bottom:12px; }
+  .section h2 { font-family:'Playfair Display',serif; font-size:clamp(26px,4vw,38px); line-height:1.2; margin-bottom:32px; }
+
+  /* WHAT'S INCLUDED */
+  .included-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; }
+  .inc-card { background:var(--white); border-radius:14px; padding:22px; border-left:3px solid var(--caramel); }
+  .inc-icon { font-size:22px; margin-bottom:10px; }
+  .inc-title { font-size:15px; font-weight:500; margin-bottom:6px; }
+  .inc-desc { font-size:13px; color:#777; line-height:1.6; }
+
+  /* HOW IT WORKS */
+  .steps { display:flex; flex-direction:column; gap:0; }
+  .step { display:flex; gap:20px; align-items:flex-start; position:relative; padding-bottom:28px; }
+  .step:last-child { padding-bottom:0; }
+  .step-left { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
+  .step-num { width:40px; height:40px; border-radius:50%; background:var(--dark); color:var(--white); display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:500; flex-shrink:0; }
+  .step-line { width:1px; flex:1; background:var(--nude); margin-top:8px; min-height:32px; }
+  .step:last-child .step-line { display:none; }
+  .step-body { padding-top:8px; }
+  .step-title { font-size:15px; font-weight:500; margin-bottom:4px; }
+  .step-desc { font-size:14px; color:#777; line-height:1.6; }
+
+  /* FOR WHO */
+  .for-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .for-card { border-radius:12px; padding:16px 18px; }
+  .for-yes { background:var(--green); }
+  .for-no { background:var(--pink-soft); }
+  .for-label { font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:10px; }
+  .for-yes .for-label { color:var(--green-dark); }
+  .for-no .for-label { color:var(--accent); }
+  .for-item { font-size:13px; color:var(--dark); line-height:1.7; padding-left:2px; }
+
+  /* ABOUT */
+  .about-section { background:var(--dark); padding:72px 24px; text-align:center; }
+  .about-inner { max-width:540px; margin:0 auto; }
+  .avatar { width:80px; height:80px; border-radius:50%; background:var(--caramel); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:28px; color:var(--white); margin:0 auto 20px; border:2px solid var(--accent); }
+  .about-section h3 { font-family:'Playfair Display',serif; font-size:24px; color:var(--white); margin-bottom:6px; }
+  .about-section .role { font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--caramel); margin-bottom:20px; }
+  .about-section p { font-size:15px; color:var(--nude); line-height:1.8; font-weight:300; }
+
+  /* FAQ */
+  .faq-list { display:flex; flex-direction:column; gap:12px; }
+  .faq-item { background:var(--white); border-radius:12px; padding:18px 20px; }
+  .faq-q { font-size:14px; font-weight:500; margin-bottom:6px; }
+  .faq-a { font-size:13px; color:#777; line-height:1.6; }
+
+  /* CTA FINAL */
+  .cta-section { background:var(--nude); padding:80px 24px; text-align:center; }
+  .cta-section h2 { font-family:'Playfair Display',serif; font-size:clamp(26px,4vw,38px); margin-bottom:12px; }
+  .cta-section p { font-size:15px; color:#777; margin-bottom:40px; line-height:1.6; max-width:460px; margin-left:auto; margin-right:auto; }
+  .spots-badge { display:inline-block; background:var(--dark); color:var(--caramel); font-size:12px; font-weight:500; padding:6px 16px; border-radius:20px; margin-bottom:24px; letter-spacing:0.05em; }
+  .btn-cta { display:inline-block; padding:18px 48px; background:var(--dark); color:var(--white); border:none; border-radius:10px; font-family:'DM Sans',sans-serif; font-size:16px; font-weight:500; cursor:pointer; text-decoration:none; transition:background 0.2s; }
+  .btn-cta:hover { background:var(--accent); }
+
+  footer { background:var(--dark); padding:28px 24px; text-align:center; font-size:12px; color:#666; }
+  footer a { color:var(--caramel); text-decoration:none; }
+
+  @media (max-width:600px) {
+    .for-grid { grid-template-columns:1fr; }
+    .included-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">Coaching groupe · Ouverture prochaine</div>
+  <h1>PeachBuilder<br><span>Club</span></h1>
+  <p class="hero-sub">Le programme fessiers accompagné — programme personnalisé, suivi hebdo, communauté privée. Tout ce qu'il faut pour vraiment voir la différence.</p>
+  <div style="margin-bottom:32px">
+    <div class="hero-price">
+      <span class="price-num">49€</span>
+      <span class="price-sub">/ mois · résiliable à tout moment</span>
+    </div>
+  </div>
+  <a href="#rejoindre" class="btn-hero">Je rejoins le club 🍑</a>
+  <p class="hero-note">Places limitées à 30 membres pour le lancement</p>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="section">
+  <p class="section-label">Ce qui est inclus</p>
+  <h2>Tout ce dont tu as besoin, rien de superflu</h2>
+  <div class="included-grid">
+    <div class="inc-card">
+      <div class="inc-icon">🍑</div>
+      <div class="inc-title">Programme adapté à ton niveau</div>
+      <p class="inc-desc">Débutante, intermédiaire ou avancée — tu reçois le programme qui correspond à où tu en es vraiment.</p>
+    </div>
+    <div class="inc-card">
+      <div class="inc-icon">📋</div>
+      <div class="inc-title">Check-in hebdomadaire</div>
+      <p class="inc-desc">Chaque semaine un formulaire rapide — tes ressentis, tes questions, tes blocages. Je lis tout et réponds en groupe.</p>
+    </div>
+    <div class="inc-card">
+      <div class="inc-icon">🎥</div>
+      <div class="inc-title">Live mensuel avec Loryne</div>
+      <p class="inc-desc">1h par mois en direct — questions/réponses, conseils du mois, ajustements. Tu n'es jamais seule.</p>
+    </div>
+    <div class="inc-card">
+      <div class="inc-icon">💬</div>
+      <div class="inc-title">Groupe WhatsApp privé</div>
+      <p class="inc-desc">Communauté de femmes qui ont le même objectif. Entraide, motivation, partage de résultats.</p>
+    </div>
+    <div class="inc-card">
+      <div class="inc-icon">🥗</div>
+      <div class="inc-title">Conseils nutrition</div>
+      <p class="inc-desc">Pas de régime draconien. Des conseils concrets pour manger suffisamment et progresser.</p>
+    </div>
+    <div class="inc-card">
+      <div class="inc-icon">📱</div>
+      <div class="inc-title">Accès à vie au contenu</div>
+      <p class="inc-desc">Tous les programmes, vidéos et ressources restent accessibles tant que tu es membre.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section style="background:var(--dark); padding:72px 24px;">
+  <div style="max-width:560px; margin:0 auto;">
+    <p style="font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--caramel);margin-bottom:12px">Comment ça marche</p>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,36px);color:var(--white);margin-bottom:36px">Simple. Efficace. Sans prise de tête.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div>
+        <div class="step-body"><div class="step-title" style="color:var(--white)">Tu réponds au questionnaire</div><p class="step-desc">Niveau, fréquence, objectif, accès salle. 2 minutes chrono.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div>
+        <div class="step-body"><div class="step-title" style="color:var(--white)">Tu reçois ton programme adapté</div><p class="step-desc">Niveau 1, 2 ou 3 selon ton profil. Avec les vidéos d'exécution.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-left"><div class="step-num">3</div><div class="step-line"></div></div>
+        <div class="step-body"><div class="step-title" style="color:var(--white)">Tu rejoins le groupe WhatsApp</div><p class="step-desc">Accès immédiat à la communauté et aux check-ins hebdo.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-left"><div class="step-num">4</div></div>
+        <div class="step-body"><div class="step-title" style="color:var(--white)">Tu progresses, semaine après semaine</div><p class="step-desc">Un live par mois, des ajustements réguliers, des résultats visibles.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="section">
+  <p class="section-label">Pour qui ?</p>
+  <h2>Le Club est fait pour toi si...</h2>
+  <div class="for-grid">
+    <div class="for-card for-yes">
+      <p class="for-label">✓ Oui, c'est toi</p>
+      <p class="for-item">Tu veux des fessiers plus ronds et galbés</p>
+      <p class="for-item">Tu t'entraînes mais ne vois pas de résultats</p>
+      <p class="for-item">Tu cherches de la structure et du suivi</p>
+      <p class="for-item">Tu veux progresser sans te priver ni t'épuiser</p>
+      <p class="for-item">Tu es débutante, intermédiaire ou avancée</p>
+    </div>
+    <div class="for-card for-no">
+      <p class="for-label">✗ Pas pour toi si</p>
+      <p class="for-item">Tu cherches un régime drastique</p>
+      <p class="for-item">Tu veux des résultats en 1 semaine</p>
+      <p class="for-item">Tu n'as pas accès à une salle de sport</p>
+      <p class="for-item">Tu veux un suivi 100% individuel 7j/7</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="about-inner">
+    <div class="avatar">LB</div>
+    <h3>Loryne Belle</h3>
+    <p class="role">Coach fessiers · IFBB Pro Bikini · @lorynebelle</p>
+    <p>3 ans de compétition IFBB Pro Bikini m'ont appris exactement comment fonctionne le corps féminin et comment sculpter un physique équilibré. Aujourd'hui j'applique tout ça pour t'aider à obtenir les fessiers que tu mérites — sans extrêmes, sans souffrance.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <p class="section-label">Questions fréquentes</p>
+  <h2>Tout ce que tu veux savoir</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <p class="faq-q">Je suis débutante complète, c'est fait pour moi ?</p>
+      <p class="faq-a">Oui absolument. Le programme niveau 1 est conçu pour les débutantes — on part des bases, avec les bons mouvements dès le départ.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Combien de séances par semaine ?</p>
+      <p class="faq-a">Entre 2 et 4 séances selon ton niveau et ta disponibilité. Le questionnaire d'entrée nous permet d'adapter ton programme.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Je peux me désabonner quand je veux ?</p>
+      <p class="faq-a">Oui, sans engagement. Tu résilles quand tu veux, sans frais ni justification.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">C'est différent de PeachBuilder seul ?</p>
+      <p class="faq-a">PeachBuilder c'est le programme en autonomie. Le Club c'est le programme + le suivi + la communauté + les lives. Tu n'es pas seule.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">J'ai besoin de quoi comme équipement ?</p>
+      <p class="faq-a">L'accès à une salle de sport est nécessaire — les exercices utilisent des machines et des poids libres.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section" id="rejoindre">
+  <div class="spots-badge">Places limitées à 30 membres</div>
+  <h2>Prête à rejoindre le Club ?</h2>
+  <p>49€/mois · résiliable à tout moment · programme adapté à ton niveau · communauté privée · live mensuel</p>
+  <a href="https://stan.store/lorynebelle" class="btn-cta">Je rejoins le PeachBuilder Club 🍑</a>
+  <p style="font-size:12px;color:#999;margin-top:16px">Questions ? Écris-moi sur Instagram @lorynebelle</p>
+</section>
+
+<footer>
+  <p>© 2025 Loryne Belle · <a href="mailto:lb.coaching@yahoo.com">lb.coaching@yahoo.com</a> · <a href="https://instagram.com/lorynebelle">@lorynebelle</a></p>
+</footer>
+
+</body>
+</html>
